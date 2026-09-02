@@ -1,0 +1,93 @@
+<section class="booking-page">
+
+  <div class="booking-header">
+    <span>SEAT RESERVATION</span>
+
+    <h1>
+      Book Your
+      <strong>Event</strong>
+    </h1>
+
+    <p>
+      Event ID:
+      <b>{{ eventId }}</b>
+    </p>
+  </div>
+
+  <div class="booking-card">
+
+    <div class="stage">
+      STAGE
+    </div>
+
+    <h2>Select Your Seats</h2>
+
+    <div class="seat-grid">
+
+      @for (seat of seats; track seat.id) {
+
+        <button
+          class="seat"
+          [class.selected]="seat.selected"
+          [class.booked]="seat.booked"
+          [disabled]="seat.booked"
+          (click)="selectSeat(seat)">
+
+          {{ seat.name }}
+
+        </button>
+
+      }
+
+    </div>
+
+    <div class="legend">
+
+      <div>
+        <span class="dot available"></span>
+        Available
+      </div>
+
+      <div>
+        <span class="dot selected-dot"></span>
+        Selected
+      </div>
+
+      <div>
+        <span class="dot booked-dot"></span>
+        Booked
+      </div>
+
+    </div>
+
+    <div class="selected-box">
+
+      <h3>Selected Seats</h3>
+
+      @if (selectedSeats.length === 0) {
+        <p>No seats selected</p>
+      }
+
+      @for (seat of selectedSeats; track seat.id) {
+        <span class="selected-chip">
+          {{ seat.name }}
+        </span>
+      }
+
+    </div>
+
+    @if (selectedSeats.length > 0) {
+
+      <button
+        class="continue-btn"
+        (click)="createBooking()">
+
+        Confirm Booking & Continue →
+
+      </button>
+
+    }
+
+  </div>
+
+</section>
