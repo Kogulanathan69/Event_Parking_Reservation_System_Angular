@@ -1,0 +1,78 @@
+<section class="events-page">
+
+  <div class="events-header">
+    <span>DISCOVER EVENTS</span>
+
+    <h1>
+      Upcoming
+      <strong>Experiences</strong>
+    </h1>
+
+    <p>
+      Explore exciting events and reserve your seats
+      before they sell out.
+    </p>
+  </div>
+
+  <div class="event-grid">
+
+    @for (event of events; track event.id) {
+
+      <article class="event-card">
+
+        <div class="event-image">
+
+         <img
+            [src]="event.image"
+            [alt]="event.name">
+            
+          <span class="event-badge">
+            UPCOMING
+          </span>
+
+        </div>
+
+        <div class="event-content">
+
+          <h2>{{ event.name }}</h2>
+
+          <div class="event-meta">
+
+            <p>
+              <span>📅</span>
+              {{ event.date }}
+            </p>
+
+            <p>
+              <span>📍</span>
+              {{ event.venue }}
+            </p>
+
+          </div>
+
+          <div class="event-footer">
+
+            <div>
+              <small>STARTING FROM</small>
+              <strong>Rs. {{ event.price }}</strong>
+            </div>
+
+            <a
+              [routerLink]="['/booking', event.id]"
+              class="book-btn">
+
+              Book Now →
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    }
+
+  </div>
+
+</section>

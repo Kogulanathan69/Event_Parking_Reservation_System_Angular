@@ -1,0 +1,174 @@
+<section class="payment-page">
+
+  <div class="payment-header">
+    <span>PAYMENT CHECKOUT</span>
+
+    <h1>
+      Complete Your
+      <strong>Payment</strong>
+    </h1>
+
+    <p>
+      Review your booking details and choose a payment method.
+    </p>
+  </div>
+
+
+  <div class="payment-card">
+
+    <div class="summary-title">
+      <div class="summary-icon">
+        💳
+      </div>
+
+      <div>
+        <h2>Booking Summary</h2>
+        <p>Check your reservation details before payment.</p>
+      </div>
+    </div>
+
+
+    <div class="summary-list">
+
+      <div class="summary-row">
+        <span>Event ID</span>
+        <strong>{{ eventId }}</strong>
+      </div>
+
+      <div class="summary-row">
+        <span>Seats</span>
+        <strong>{{ seatIds }}</strong>
+      </div>
+
+      <div class="summary-row">
+        <span>Parking</span>
+
+        <strong>
+          @if (parkingId > 0) {
+            P{{ parkingId }}
+          } @else {
+            No Parking
+          }
+        </strong>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="summary-row">
+        <span>Ticket Amount</span>
+        <strong>Rs. {{ ticketAmount }}</strong>
+      </div>
+
+      @if (parkingId > 0) {
+
+        <div class="summary-row">
+          <span>Parking Fee</span>
+          <strong>Rs. {{ parkingFee }}</strong>
+        </div>
+
+      }
+
+      <div class="summary-row">
+        <span>Booking ID</span>
+        <strong>{{ bookingId }}</strong>
+      </div>
+
+    </div>
+
+
+    <div class="total-box">
+
+      <span>Total Amount</span>
+
+      <strong>
+        Rs. {{ totalAmount }}
+      </strong>
+
+    </div>
+
+
+    <div class="payment-method-section">
+
+      <h3>Select Payment Method</h3>
+
+      <div class="payment-methods">
+
+        <label
+          class="method-card"
+          [class.selected]="paymentMethod === 'Card'">
+
+          <input
+            type="radio"
+            name="paymentMethod"
+            value="Card"
+            [(ngModel)]="paymentMethod">
+
+          <span class="method-icon">💳</span>
+
+          <div>
+            <strong>Card</strong>
+            <small>Visa / Mastercard</small>
+          </div>
+
+        </label>
+
+
+        <label
+          class="method-card"
+          [class.selected]="paymentMethod === 'Cash'">
+
+          <input
+            type="radio"
+            name="paymentMethod"
+            value="Cash"
+            [(ngModel)]="paymentMethod">
+
+          <span class="method-icon">💵</span>
+
+          <div>
+            <strong>Cash</strong>
+            <small>Pay manually</small>
+          </div>
+
+        </label>
+
+
+        <label
+          class="method-card"
+          [class.selected]="paymentMethod === 'BankTransfer'">
+
+          <input
+            type="radio"
+            name="paymentMethod"
+            value="BankTransfer"
+            [(ngModel)]="paymentMethod">
+
+          <span class="method-icon">🏦</span>
+
+          <div>
+            <strong>Bank Transfer</strong>
+            <small>Direct transfer</small>
+          </div>
+
+        </label>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="pay-btn"
+      (click)="makePayment()">
+
+      Pay Rs. {{ totalAmount }} →
+
+    </button>
+
+    <p class="secure-text">
+      🔒 Secure payment processing
+    </p>
+
+  </div>
+
+</section>

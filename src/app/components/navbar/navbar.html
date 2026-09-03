@@ -1,0 +1,50 @@
+<nav class="navbar">
+
+  <div class="nav-container">
+
+    <a routerLink="/" class="logo">
+      EVENT<span>FLOW</span>
+    </a>
+
+    <div class="nav-links">
+
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        HOME
+      </a>
+
+      <a routerLink="/events" routerLinkActive="active">
+        EVENTS
+      </a>
+
+      <a routerLink="/booking" routerLinkActive="active">
+        BOOKING
+      </a>
+
+      <a routerLink="/parking" routerLinkActive="active">
+        PARKING
+      </a>
+
+      <a routerLink="/payment" routerLinkActive="active">
+        PAYMENT
+      </a>
+
+    </div>
+
+    <div class="nav-actions">
+
+      <a routerLink="/login" class="login-link">
+        LOGIN
+      </a>
+
+      <a routerLink="/register" class="register-btn">
+        REGISTER
+      </a>
+
+    </div>
+
+  </div>
+
+</nav>
