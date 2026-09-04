@@ -3,37 +3,61 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-private-event',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './private-event.html',
   styleUrl: './private-event.css'
 })
 export class PrivateEvent {
 
-  eventType: string = 'Wedding';
+  eventType = 'Wedding';
+  eventName = '';
+  venue = '';
+  eventDate = '';
+  guestCount = 80;
+  needParking = true;
 
-  eventName: string = '';
+  message = '';
+  errorMessage = '';
 
-  venue: string = '';
+  setParking(value: boolean): void {
+    this.needParking = value;
+  }
 
-  eventDate: string = '';
+  continueBooking(): void {
 
-  guestCount: number = 100;
+    this.message = '';
+    this.errorMessage = '';
 
-  needParking: boolean = true;
+    if (
+      !this.eventType ||
+      !this.eventName ||
+      !this.venue ||
+      !this.eventDate ||
+      !this.guestCount
+    ) {
+      this.errorMessage = 'Please complete all required fields.';
+      return;
+    }
 
-  submitPrivateEvent(): void {
+    if (this.guestCount <= 0) {
+      this.errorMessage = 'Guest count must be greater than 0.';
+      return;
+    }
 
-    const privateEventData = {
+    this.message = 'Private event details are ready to continue.';
+
+    console.log({
       eventType: this.eventType,
       eventName: this.eventName,
       venue: this.venue,
       eventDate: this.eventDate,
       guestCount: this.guestCount,
       needParking: this.needParking
-    };
+    });
 
-    console.log('Private Event:', privateEventData);
-
-    alert('Private Event details saved!');
+    /*
+      Backend API later connect pannuvom.
+    */
   }
 }

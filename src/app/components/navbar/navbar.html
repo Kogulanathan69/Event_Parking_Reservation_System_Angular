@@ -1,0 +1,104 @@
+<nav class="navbar">
+
+  <div class="logo">
+    EVENT<span>FLOW</span>
+  </div>
+
+  <div class="nav-links">
+
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      HOME
+    </a>
+
+    <a
+      routerLink="/about"
+      routerLinkActive="active">
+      ABOUT
+    </a>
+
+    <a
+      routerLink="/events"
+      routerLinkActive="active">
+      EVENTS
+    </a>
+
+    <div class="dropdown">
+
+      <button class="dropdown-btn">
+        SERVICES ▾
+      </button>
+
+      <div class="dropdown-menu">
+
+        <a routerLink="/booking">
+          Booking
+        </a>
+
+        <a routerLink="/parking">
+          Parking
+        </a>
+
+        <a routerLink="/payment">
+          Payment
+        </a>
+
+        @if (isLoggedIn) {
+          <a routerLink="/my-bookings">
+            My Bookings
+          </a>
+        }
+
+        @if (isAdmin) {
+          <a
+            routerLink="/admin"
+            routerLinkActive="active">
+            Admin Dashboard
+          </a>
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="nav-actions">
+
+    @if (!isLoggedIn) {
+
+      <a
+        routerLink="/login"
+        class="login-btn">
+        LOGIN
+      </a>
+
+      <a
+        routerLink="/register"
+        class="register-btn">
+        REGISTER
+      </a>
+
+    } @else {
+
+      @if (userName) {
+        <span class="user-name">
+          {{ userName }}
+        </span>
+      }
+
+      <button
+        type="button"
+        class="logout-btn"
+        (click)="logout()">
+        LOGOUT
+      </button>
+
+    }
+
+  </div>
+
+</nav>

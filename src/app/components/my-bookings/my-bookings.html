@@ -1,0 +1,259 @@
+<section class="my-bookings-page">
+
+  <div class="page-header">
+
+    <span class="eyebrow">
+      MY BOOKINGS
+    </span>
+
+    <h1>
+      Your Reservations
+    </h1>
+
+    <p>
+      Manage your public and private event bookings in one place.
+    </p>
+
+  </div>
+
+
+  <!-- SUMMARY -->
+  <div class="summary-grid">
+
+    <div class="summary-card">
+      <span>Total Public</span>
+      <strong>{{ publicBookings.length }}</strong>
+    </div>
+
+    <div class="summary-card">
+      <span>Total Private</span>
+      <strong>{{ privateBookings.length }}</strong>
+    </div>
+
+    <div class="summary-card">
+      <span>Total Reservations</span>
+      <strong>
+        {{ publicBookings.length + privateBookings.length }}
+      </strong>
+    </div>
+
+  </div>
+
+
+  <!-- PUBLIC BOOKINGS -->
+  <section class="booking-section">
+
+    <div class="section-heading">
+
+      <div>
+        <span class="section-tag">
+          PUBLIC EVENTS
+        </span>
+
+        <h2>
+          🎟 Public Event Bookings
+        </h2>
+      </div>
+
+      <span class="count-badge">
+        {{ publicBookings.length }} Bookings
+      </span>
+
+    </div>
+
+
+    @if (publicBookings.length === 0) {
+
+      <div class="empty-box">
+        <div class="empty-icon">🎟</div>
+        <h3>No public bookings yet</h3>
+        <p>
+          Your public event reservations will appear here.
+        </p>
+      </div>
+
+    } @else {
+
+      <div class="booking-grid">
+
+        @for (booking of publicBookings; track booking.id) {
+
+          <article class="booking-card public-card">
+
+            <div class="card-top">
+
+              <div>
+                <span class="booking-label">
+                  BOOKING
+                </span>
+
+                <h3>
+                  #{{ booking.id }}
+                </h3>
+              </div>
+
+              <span
+                class="status"
+                [class.confirmed]="booking.status === 'Confirmed'"
+                [class.pending]="booking.status === 'Pending'"
+                [class.cancelled]="booking.status === 'Cancelled'"
+                [class.expired]="booking.status === 'Expired'">
+
+                {{ booking.status }}
+
+              </span>
+
+            </div>
+
+
+            <div class="booking-details">
+
+              <div class="detail-row">
+                <span>Event ID</span>
+                <strong>{{ booking.eventId }}</strong>
+              </div>
+
+              <div class="detail-row">
+                <span>Total Amount</span>
+                <strong>
+                  Rs. {{ booking.totalAmount }}
+                </strong>
+              </div>
+
+              <div class="detail-row">
+                <span>Booking Date</span>
+
+                <strong>
+                  {{ booking.bookingDate | date:'mediumDate' }}
+                </strong>
+              </div>
+
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+    }
+
+  </section>
+
+
+  <!-- PRIVATE BOOKINGS -->
+  <section class="booking-section private-section">
+
+    <div class="section-heading">
+
+      <div>
+        <span class="section-tag private-tag">
+          PRIVATE EVENTS
+        </span>
+
+        <h2>
+          💍 Private Event Bookings
+        </h2>
+      </div>
+
+      <span class="count-badge">
+        {{ privateBookings.length }} Bookings
+      </span>
+
+    </div>
+
+
+    @if (privateBookings.length === 0) {
+
+      <div class="empty-box">
+        <div class="empty-icon">💍</div>
+
+        <h3>
+          No private bookings yet
+        </h3>
+
+        <p>
+          Wedding, birthday and private event bookings will appear here.
+        </p>
+      </div>
+
+    } @else {
+
+      <div class="booking-grid">
+
+        @for (booking of privateBookings; track booking.id) {
+
+          <article class="booking-card private-card">
+
+            <div class="card-top">
+
+              <div>
+
+                <span class="booking-label">
+                  {{ booking.eventType }}
+                </span>
+
+                <h3>
+                  {{ booking.eventName }}
+                </h3>
+
+              </div>
+
+
+              <span
+                class="status"
+                [class.confirmed]="booking.status === 'Confirmed'"
+                [class.pending]="booking.status === 'Pending'"
+                [class.cancelled]="booking.status === 'Cancelled'">
+
+                {{ booking.status }}
+
+              </span>
+
+            </div>
+
+
+            <div class="booking-details">
+
+              <div class="detail-row">
+                <span>Guests</span>
+                <strong>{{ booking.guestCount }}</strong>
+              </div>
+
+              <div class="detail-row">
+                <span>Event Date</span>
+
+                <strong>
+                  {{ booking.eventDate | date:'mediumDate' }}
+                </strong>
+              </div>
+
+              <div class="detail-row">
+                <span>Parking</span>
+
+                <strong>
+                  {{ booking.needParking ? 'Required' : 'Not Required' }}
+                </strong>
+              </div>
+
+              <div class="detail-row">
+                <span>Total Amount</span>
+
+                <strong>
+                  Rs. {{ booking.totalAmount }}
+                </strong>
+              </div>
+
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+    }
+
+  </section>
+
+</section>

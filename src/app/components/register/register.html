@@ -1,0 +1,138 @@
+<div class="register-page">
+
+  <div class="register-header">
+    <p>EVENTFLOW • CREATE ACCOUNT</p>
+
+    <h1>
+      Join
+      <span>EventFlow</span>
+    </h1>
+  </div>
+
+  <div class="register-card">
+
+    <div class="brand">
+      <div class="logo-circle">
+        <div class="logo-dot"></div>
+      </div>
+
+      <span>EVENTFLOW</span>
+    </div>
+
+    <div class="title-section">
+      <h2>Create account</h2>
+      <p>
+        Create your account and start managing your event journey.
+      </p>
+    </div>
+
+    <form (ngSubmit)="register()">
+
+      <div class="form-group">
+        <label>Name</label>
+
+        <div class="input-box">
+          <span class="input-icon">👤</span>
+
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="name"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+
+        <div class="input-box">
+          <span class="input-icon">✉</span>
+
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            placeholder="you@example.com"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Phone</label>
+
+        <div class="input-box">
+          <span class="input-icon">☎</span>
+
+          <input
+            type="text"
+            name="phone"
+            [(ngModel)]="phone"
+            placeholder="Enter your phone number"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+
+        <div class="input-box">
+          <span class="input-icon">🔒</span>
+
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            placeholder="Create a password"
+            required
+          />
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="register-button"
+      >
+        <span>Create Account</span>
+        <span>→</span>
+      </button>
+
+    </form>
+
+    @if (message) {
+      <div class="success-message">
+        {{ message }}
+      </div>
+    }
+
+    @if (errorMessage) {
+      <div class="error-message">
+        {{ errorMessage }}
+      </div>
+    }
+
+    <div class="register-tip">
+      <span class="tip-dot"></span>
+      Complete all required details to continue.
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="login-link">
+      Already have an account?
+      <a href="/login">Sign in</a>
+    </div>
+
+  </div>
+
+  <div class="bottom-text">
+    <span>SECURE REGISTER</span>
+    <span>•</span>
+    <span>EVENTFLOW</span>
+    <span>•</span>
+    <span>SMART EVENTS</span>
+  </div>
+
+</div>

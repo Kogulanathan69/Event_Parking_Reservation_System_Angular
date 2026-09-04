@@ -1,0 +1,161 @@
+<section class="parking-page">
+
+  <div class="parking-header">
+    <span>PARKING RESERVATION</span>
+
+    <h1>
+      Choose Your
+      <strong>Parking</strong>
+    </h1>
+
+    <p>
+      Event ID: <b>{{ eventId }}</b>
+      &nbsp; | &nbsp;
+      Selected Seats: <b>{{ seatIds }}</b>
+    </p>
+  </div>
+
+  <div class="parking-card">
+
+    <div class="parking-question">
+
+      <div class="question-icon">
+        🚗
+      </div>
+
+      <div>
+        <h2>Do you need parking?</h2>
+        <p>Select an option to continue your reservation.</p>
+      </div>
+
+    </div>
+
+    <div class="parking-choice">
+
+      <button
+        class="choice-btn"
+        [class.active]="needParking === true"
+        (click)="chooseParking(true)">
+        Yes, I Need Parking
+      </button>
+
+      <button
+        class="choice-btn no-btn"
+        [class.active]="needParking === false"
+        (click)="chooseParking(false)">
+        No Parking
+      </button>
+
+    </div>
+
+
+    @if (needParking === true) {
+
+      <div class="slot-section">
+
+        <div class="slot-title">
+          <h3>Select Parking Slot</h3>
+          <p>Choose one available parking space.</p>
+        </div>
+
+        <div class="parking-grid">
+
+          @for (slot of parkingSlots; track slot.id) {
+
+            <button
+              class="parking-slot"
+              [class.selected]="slot.selected"
+              [class.booked]="slot.booked"
+              [disabled]="slot.booked"
+              (click)="selectParking(slot)">
+
+              <span class="car-icon">🚘</span>
+
+              <strong>{{ slot.name }}</strong>
+
+              @if (slot.booked) {
+                <small>Booked</small>
+              } @else if (slot.selected) {
+                <small>Selected</small>
+              } @else {
+                <small>Available</small>
+              }
+
+            </button>
+
+          }
+
+        </div>
+
+        <div class="parking-legend">
+
+          <div>
+            <span class="legend-dot available-dot"></span>
+            Available
+          </div>
+
+          <div>
+            <span class="legend-dot selected-dot"></span>
+            Selected
+          </div>
+
+          <div>
+            <span class="legend-dot booked-dot"></span>
+            Booked
+          </div>
+
+        </div>
+
+      </div>
+
+    }
+
+
+    @if (needParking === false) {
+
+      <div class="no-parking-box">
+        <span>✓</span>
+
+        <div>
+          <h3>No Parking Selected</h3>
+          <p>You can continue directly to payment.</p>
+        </div>
+      </div>
+
+    }
+
+
+    @if (
+      needParking === false ||
+      (needParking === true && selectedParking)
+    ) {
+
+      <div class="parking-summary">
+
+        <div>
+          <small>PARKING SELECTION</small>
+
+          <strong>
+            @if (needParking === true) {
+              {{ selectedParking?.name }}
+            } @else {
+              No Parking
+            }
+          </strong>
+        </div>
+
+        <button
+          class="continue-btn"
+          (click)="continueToPayment()">
+
+          Continue to Payment →
+
+        </button>
+
+      </div>
+
+    }
+
+  </div>
+
+</section>
