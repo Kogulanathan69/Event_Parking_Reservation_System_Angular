@@ -1,0 +1,150 @@
+<div class="otp-page">
+
+  <div class="otp-header">
+
+    <p class="small-title">
+      EVENTFLOW • OTP VERIFICATION
+    </p>
+
+    <h1>
+      Verify Your
+      <span>Account</span>
+    </h1>
+
+  </div>
+
+
+  <div class="otp-card">
+
+    <div class="top-line"></div>
+
+
+    <div class="brand">
+
+      <div class="logo-circle">
+        <div class="logo-dot"></div>
+      </div>
+
+      <span>EVENTFLOW</span>
+
+    </div>
+
+
+    <div class="title-section">
+
+      <h2>Verify your account</h2>
+
+      <p>
+        Enter the 4-digit verification code sent to your
+        registered email or phone number.
+      </p>
+
+    </div>
+
+
+    <div class="otp-container">
+
+      @for (item of otp; track $index) {
+
+        <input
+          #otpInput
+          type="text"
+          inputmode="numeric"
+          maxlength="1"
+          class="otp-input"
+          [(ngModel)]="otp[$index]"
+          (input)="onInput($event, $index)"
+          (keydown)="onKeyDown($event, $index)"
+        />
+
+      }
+
+    </div>
+
+
+    <button
+      type="button"
+      class="verify-button"
+      [disabled]="loading"
+      (click)="verifyOtp()"
+    >
+
+      @if (loading) {
+
+        <span>Verifying...</span>
+
+      } @else {
+
+        <span>Verify OTP</span>
+        <span>→</span>
+
+      }
+
+    </button>
+
+
+    @if (successMessage) {
+
+      <div class="success-message">
+        {{ successMessage }}
+      </div>
+
+    }
+
+
+    @if (errorMessage) {
+
+      <div class="error-message">
+        {{ errorMessage }}
+      </div>
+
+    }
+
+
+    <div class="otp-info">
+
+      <span class="info-dot"></span>
+
+      Enter the code before it expires.
+
+    </div>
+
+
+    <div class="divider"></div>
+
+
+    <div class="resend-section">
+
+      <span>Didn't receive the code?</span>
+
+      <button
+        type="button"
+        class="resend-button"
+        (click)="resendOtp()"
+      >
+        Resend OTP
+      </button>
+
+    </div>
+
+
+    
+
+  </div>
+
+
+  <div class="bottom-text">
+
+    <span>SECURE OTP</span>
+
+    <span>•</span>
+
+    <span>EVENTFLOW</span>
+
+    <span>•</span>
+
+    <span>VERIFIED ACCESS</span>
+
+  </div>
+
+</div>

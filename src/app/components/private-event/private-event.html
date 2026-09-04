@@ -1,140 +1,290 @@
-<section class="private-page">
+<div class="private-event-page">
 
-  <div class="private-header">
+  <div class="page-heading">
 
-    <span>PRIVATE EVENT PLANNER</span>
+    <p class="eyebrow">
+      EVENTFLOW • PRIVATE EVENTS
+    </p>
 
     <h1>
       Plan Your
-      <strong>Special Event</strong>
+      <span>Special Event</span>
     </h1>
 
-    <p>
-      Wedding, birthday and private function booking.
+    <p class="subtitle">
+      Create a memorable wedding, birthday or private function
+      with EventFlow.
     </p>
 
   </div>
 
 
-  <div class="private-card">
+  <div class="event-card">
 
-    <div class="form-group">
+    <div class="card-top-line"></div>
 
-      <label>Event Type</label>
+    <div class="card-brand">
 
-      <select [(ngModel)]="eventType">
-
-        <option value="Wedding">
-          Wedding
-        </option>
-
-        <option value="Birthday">
-          Birthday Party
-        </option>
-
-        <option value="PrivateFunction">
-          Private Function
-        </option>
-
-      </select>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>Event Name</label>
-
-      <input
-        type="text"
-        [(ngModel)]="eventName"
-        placeholder="Example: Nirupan Wedding">
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>Venue</label>
-
-      <input
-        type="text"
-        [(ngModel)]="venue"
-        placeholder="Enter venue">
-
-    </div>
-
-
-    <div class="form-row">
-
-      <div class="form-group">
-
-        <label>Event Date</label>
-
-        <input
-          type="date"
-          [(ngModel)]="eventDate">
-
+      <div class="brand-icon">
+        <span></span>
       </div>
-
-
-      <div class="form-group">
-
-        <label>Guest Count</label>
-
-        <input
-          type="number"
-          [(ngModel)]="guestCount"
-          min="1">
-
-      </div>
-
-    </div>
-
-
-    <div class="parking-option">
 
       <div>
-        <h3>Need Parking?</h3>
-
-        <p>
-          Reserve parking for your guests.
-        </p>
-      </div>
-
-      <div class="parking-buttons">
-
-        <button
-          type="button"
-          [class.active]="needParking === true"
-          (click)="needParking = true">
-
-          Yes
-
-        </button>
-
-        <button
-          type="button"
-          [class.active]="needParking === false"
-          (click)="needParking = false">
-
-          No
-
-        </button>
-
+        <small>PRIVATE EVENT</small>
+        <h2>Event Details</h2>
       </div>
 
     </div>
 
 
-    <button
-      class="continue-btn"
-      (click)="submitPrivateEvent()">
+    <form (ngSubmit)="continueBooking()">
 
-      Continue Private Event Booking →
+      <div class="form-group">
 
-    </button>
+        <label>
+          Event Type
+          <span>*</span>
+        </label>
+
+        <div class="input-shell">
+
+          <span class="field-icon">
+            ✦
+          </span>
+
+          <select
+            name="eventType"
+            [(ngModel)]="eventType"
+            required
+          >
+            <option value="Wedding">
+              Wedding
+            </option>
+
+            <option value="Birthday">
+              Birthday
+            </option>
+
+            <option value="Private Function">
+              Private Function
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Event Name
+          <span>*</span>
+        </label>
+
+        <div class="input-shell">
+
+          <span class="field-icon">
+            ✎
+          </span>
+
+          <input
+            type="text"
+            name="eventName"
+            [(ngModel)]="eventName"
+            placeholder="Example: Nirupan Wedding"
+            required
+          />
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Venue
+          <span>*</span>
+        </label>
+
+        <div class="input-shell">
+
+          <span class="field-icon">
+            ⌖
+          </span>
+
+          <input
+            type="text"
+            name="venue"
+            [(ngModel)]="venue"
+            placeholder="Enter venue"
+            required
+          />
+
+        </div>
+
+      </div>
+
+
+      <div class="two-column">
+
+        <div class="form-group">
+
+          <label>
+            Event Date
+            <span>*</span>
+          </label>
+
+          <div class="input-shell">
+
+            <input
+              type="date"
+              name="eventDate"
+              [(ngModel)]="eventDate"
+              required
+            />
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Guest Count
+            <span>*</span>
+          </label>
+
+          <div class="input-shell">
+
+            <span class="field-icon">
+              👥
+            </span>
+
+            <input
+              type="number"
+              name="guestCount"
+              [(ngModel)]="guestCount"
+              min="1"
+              placeholder="Enter guest count"
+              required
+            />
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="parking-section">
+
+        <div class="parking-info">
+
+          <div class="parking-icon">
+            P
+          </div>
+
+          <div>
+            <h3>Need Parking?</h3>
+
+            <p>
+              Reserve parking space for your guests.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="parking-toggle">
+
+          <button
+            type="button"
+            [class.active]="needParking"
+            (click)="setParking(true)"
+          >
+            Yes
+          </button>
+
+          <button
+            type="button"
+            [class.active]="!needParking"
+            (click)="setParking(false)"
+          >
+            No
+          </button>
+
+        </div>
+
+      </div>
+
+
+      @if (needParking) {
+
+        <div class="parking-note">
+
+          <span>✓</span>
+
+          Parking details will be selected in the next step.
+
+        </div>
+
+      }
+
+
+      <button
+        class="continue-button"
+        type="submit"
+      >
+
+        <span>
+          Continue Private Event Booking
+        </span>
+
+        <span class="arrow">
+          →
+        </span>
+
+      </button>
+
+    </form>
+
+
+    @if (message) {
+
+      <div class="success-message">
+        {{ message }}
+      </div>
+
+    }
+
+
+    @if (errorMessage) {
+
+      <div class="error-message">
+        {{ errorMessage }}
+      </div>
+
+    }
 
   </div>
 
-</section>
+
+  <div class="bottom-label">
+
+    <span>PRIVATE EVENTS</span>
+
+    <span>•</span>
+
+    <span>EVENTFLOW</span>
+
+    <span>•</span>
+
+    <span>PREMIUM EXPERIENCE</span>
+
+  </div>
+
+</div>

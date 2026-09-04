@@ -1,0 +1,549 @@
+* {
+  box-sizing: border-box;
+}
+
+.otp-page {
+  min-height: calc(100vh - 70px);
+
+  background:
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(102, 179, 255, 0.18),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #f5faff,
+      #eef7ff,
+      #f9f5ff
+    );
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 80px 20px 55px;
+
+  color: #102f50;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+
+/* HEADER */
+
+.otp-header {
+  text-align: center;
+
+  margin-bottom: 28px;
+}
+
+.small-title {
+  color: #e63a97;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 4px;
+}
+
+.otp-header h1 {
+  margin: 8px 0 0;
+
+  font-size: 48px;
+
+  line-height: 1;
+
+  color: #123b63;
+}
+
+.otp-header h1 span {
+  display: block;
+
+  color: #58a9e6;
+}
+
+
+/* CARD */
+
+.otp-card {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 500px;
+
+  padding: 40px;
+
+  overflow: hidden;
+
+  background:
+    rgba(255, 255, 255, 0.97);
+
+  border:
+    1px solid
+    rgba(69, 129, 185, 0.12);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 22px 50px
+    rgba(31, 80, 120, 0.16);
+}
+
+
+/* TOP DECORATION */
+
+.top-line {
+  position: absolute;
+
+  top: 0;
+
+  left: 50%;
+
+  width: 90px;
+
+  height: 5px;
+
+  transform: translateX(-50%);
+
+  border-radius:
+    0 0 10px 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ea3897,
+      #a34ce8,
+      #58a9e6
+    );
+}
+
+
+/* BRAND */
+
+.brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 30px;
+
+  color: #143f68;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 4px;
+}
+
+.logo-circle {
+  width: 36px;
+
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    2px solid
+    #4fa8e8;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 18px
+    rgba(79, 168, 232, 0.3);
+}
+
+.logo-dot {
+  width: 10px;
+
+  height: 10px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec3594,
+      #8956f5
+    );
+}
+
+
+/* TITLE */
+
+.title-section {
+  text-align: center;
+}
+
+.title-section h2 {
+  margin: 0;
+
+  color: #102f50;
+
+  font-size: 30px;
+}
+
+.title-section p {
+  max-width: 390px;
+
+  margin:
+    10px auto
+    32px;
+
+  color: #69829a;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+/* OTP BOXES */
+
+.otp-container {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 16px;
+
+  margin-bottom: 32px;
+}
+
+.otp-input {
+  width: 68px;
+
+  height: 72px;
+
+  border:
+    1px solid
+    #d4e4f1;
+
+  border-radius: 17px;
+
+  outline: none;
+
+  background: #f8fbff;
+
+  color: #153b60;
+
+  text-align: center;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.otp-input:focus {
+  transform: translateY(-2px);
+
+  border-color: #65ade5;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(101, 173, 229, 0.13);
+}
+
+
+/* BUTTON */
+
+.verify-button {
+  width: 100%;
+
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ea3897,
+      #a34ce8,
+      #7c59f4
+    );
+
+  color: white;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 25px
+    rgba(183, 70, 207, 0.22);
+
+  transition: 0.25s ease;
+}
+
+.verify-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 16px 30px
+    rgba(183, 70, 207, 0.3);
+}
+
+.verify-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* MESSAGES */
+
+.success-message,
+.error-message {
+  margin-top: 18px;
+
+  padding: 12px;
+
+  border-radius: 11px;
+
+  text-align: center;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 13px;
+}
+
+.success-message {
+  color: #167653;
+
+  background: #eafaf4;
+}
+
+.error-message {
+  color: #b52f55;
+
+  background: #fff0f4;
+}
+
+
+/* INFO */
+
+.otp-info {
+  margin-top: 22px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  color: #7b92a7;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 12px;
+}
+
+.info-dot {
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #e43a98;
+}
+
+
+/* DIVIDER */
+
+.divider {
+  height: 1px;
+
+  margin: 28px 0;
+
+  background: #e4edf4;
+}
+
+
+/* RESEND */
+
+.resend-section {
+  text-align: center;
+
+  color: #778ea2;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 14px;
+}
+
+.resend-button {
+  margin-left: 5px;
+
+  padding: 0;
+
+  border: none;
+
+  background: none;
+
+  color: #d93695;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.resend-button:hover {
+  color: #8255ed;
+}
+
+
+/* DEMO */
+
+.demo-note {
+  margin-top: 20px;
+
+  padding: 10px;
+
+  border-radius: 10px;
+
+  background: #f5f8fc;
+
+  color: #7890a5;
+
+  text-align: center;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 12px;
+}
+
+.demo-note strong {
+  color: #d93695;
+
+  letter-spacing: 2px;
+}
+
+
+/* BOTTOM */
+
+.bottom-text {
+  margin-top: 28px;
+
+  display: flex;
+
+  gap: 12px;
+
+  color: #7890a5;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .otp-page {
+    padding: 40px 15px;
+  }
+
+  .otp-header h1 {
+    font-size: 38px;
+  }
+
+  .otp-card {
+    padding: 30px 22px;
+
+    border-radius: 22px;
+  }
+
+  .otp-container {
+    gap: 9px;
+  }
+
+  .otp-input {
+    width: 55px;
+
+    height: 62px;
+
+    font-size: 25px;
+  }
+
+  .bottom-text {
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+}

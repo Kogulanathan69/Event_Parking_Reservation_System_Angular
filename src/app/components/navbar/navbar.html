@@ -1,49 +1,103 @@
 <nav class="navbar">
 
-  <div class="nav-container">
+  <div class="logo">
+    EVENT<span>FLOW</span>
+  </div>
 
-    <a routerLink="/" class="logo">
-      EVENT<span>FLOW</span>
+  <div class="nav-links">
+
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      HOME
     </a>
 
-    <div class="nav-links">
+    <a
+      routerLink="/about"
+      routerLinkActive="active">
+      ABOUT
+    </a>
 
-      <a
-        routerLink="/"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }">
-        HOME
-      </a>
+    <a
+      routerLink="/events"
+      routerLinkActive="active">
+      EVENTS
+    </a>
 
-      <a routerLink="/events" routerLinkActive="active">
-        EVENTS
-      </a>
+    <div class="dropdown">
 
-      <a routerLink="/booking" routerLinkActive="active">
-        BOOKING
-      </a>
+      <button class="dropdown-btn">
+        SERVICES ▾
+      </button>
 
-      <a routerLink="/parking" routerLinkActive="active">
-        PARKING
-      </a>
+      <div class="dropdown-menu">
 
-      <a routerLink="/payment" routerLinkActive="active">
-        PAYMENT
-      </a>
+        <a routerLink="/booking">
+          Booking
+        </a>
+
+        <a routerLink="/parking">
+          Parking
+        </a>
+
+        <a routerLink="/payment">
+          Payment
+        </a>
+
+        @if (isLoggedIn) {
+          <a routerLink="/my-bookings">
+            My Bookings
+          </a>
+        }
+
+        @if (isAdmin) {
+          <a
+            routerLink="/admin"
+            routerLinkActive="active">
+            Admin Dashboard
+          </a>
+        }
+
+      </div>
 
     </div>
 
-    <div class="nav-actions">
+  </div>
 
-      <a routerLink="/login" class="login-link">
+
+  <div class="nav-actions">
+
+    @if (!isLoggedIn) {
+
+      <a
+        routerLink="/login"
+        class="login-btn">
         LOGIN
       </a>
 
-      <a routerLink="/register" class="register-btn">
+      <a
+        routerLink="/register"
+        class="register-btn">
         REGISTER
       </a>
 
-    </div>
+    } @else {
+
+      @if (userName) {
+        <span class="user-name">
+          {{ userName }}
+        </span>
+      }
+
+      <button
+        type="button"
+        class="logout-btn"
+        (click)="logout()">
+        LOGOUT
+      </button>
+
+    }
 
   </div>
 
